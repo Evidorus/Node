@@ -2,9 +2,7 @@ const express = require("express");
 const app = express();
 const port = 8000;
 
-app.use(express.json());
-
-const listAuthors = {
+const ListAuthors = {
   1: {
     authors: {
       name: "Lawrence Nowell",
@@ -43,47 +41,37 @@ const listAuthors = {
   },
 };
 
-console.log(listAuthors[1].authors);
+// console.log(ListAuthors[1].books)
 
 app.listen(port, () => {
-  console.log("Serveur lancé sur le port " + port);
+  console.log("Serveur lancé");
 });
 
 app.get("/", (req, res) => {
   res.send("Authors API");
 });
 
-app.get(`/authors/:nb`, (req, res) => {
-  if (req.params.nb > listAuthors.length) {
-    res.send(`The author with the ID ${req.params.nb} does not exist`);
-  } else {
-    res.send(
-      `Auteur : ${listAuthors[req.params.nb].authors.name}, pays: ${
-        listAuthors[req.params.nb].authors.nationality
-      } `
-    );
+app.get("/authors/:id", (req, res) => {
+  switch (req.params.id) {
+    case "1":
+      res.send("Lawrence Nowell, UK");
+      break;
+    case "2":
+      res.send("William Shakespeare, UK");
+      break;
+    case "3":
+      res.send("Charles Dickens, US");
+      break;
+    case "4":
+      res.send("Oscar Wilde, UK");
+      break;
+    default:
+      res.send(`the author with the ID ${req.params.id} does not exist`);
   }
-  // switch (req.params.nb) {
-  //   case "1":
-  //     res.send("Lawrence Nowell, UK");
-  //     break;
-  //   case "2":
-  //     res.send("William Shakespeare, UK");
-  //     break;
-  //   case "3":
-  //     res.send("Charles Dickens, US");
-  //     break;
-  //   case "4":
-  //     res.send("Oscar Wilde, UK");
-  //     break;
-  //   default:
-  //     res.send(`The author with the ID ${req.params.nb} does not exist`);
-  //     break;
-  // }
 });
 
-app.get("/authors/:nb/books", (req, res) => {
-  switch (req.params.nb) {
+app.get("/authors/:id/books", (req, res) => {
+  switch (req.params.id) {
     case "1":
       res.send("Beowulf");
       break;
@@ -100,13 +88,13 @@ app.get("/authors/:nb/books", (req, res) => {
 });
 
 app.get("/json/authors/:id", (req, res) => {
-  res.send(listAuthors[req.params.id].authors);
+  res.send(ListAuthors[req.params.id].authors);
 });
 
 app.get("/json/authors/:id/books", (req, res) => {
-  res.send(listAuthors[req.params.id].books);
+  res.send(ListAuthors[req.params.id].books);
 });
 
 app.get("*", (req, res) => {
-  res.send("Error 404");
+  res.send("ERROR 404");
 });

@@ -1,0 +1,36 @@
+<body>
+    <div class="background-cuisine">
+        {{> nav}}
+        {{> header}}
+    </div>
+    <div class="container-fluid content">
+        <h2>Derniers articles</h2>
+        <div class="row">
+            <div class="col-12 col-lg-8 offset-lg-1">
+                <article class="row">
+                    <div class="col-12 col-sm-10 offset-sm-1 col-md-4 offset-md-0 col-lg-3">
+                        <div class="picture">
+                            <img src="img/recipes/paella/paella-small.jpg" class="img-fluid"
+                                alt="Crepes de chez suzette" />
+                            <div class="logo"></div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-0 col-lg-9">
+                        <div class="summary">
+                            <h3><a href="/recipe">La Paëlla à la maison</a></h3>
+                            <p>Une paëlla rapide, pas chère et gouteuse.</p>
+                        </div>
+                    </div>
+                </article>
+                <!-- /article -->
+                <div class="row">
+                    <nav class="col-12 offset-sm-1 offset-md-0">
+                        <a href="/">Voir les articles suivants &raquo;</a>
+                    </nav>
+                </div>
+            </div>
+            {{> sidebar}}
+        </div>
+    </div>
+    {{> footer}}
+</body>

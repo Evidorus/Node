@@ -1,5 +1,5 @@
 {
-  "name": "chapitre_02",
+  "name": "express_integration",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,6 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "ember": "^1.0.3",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.1"
   }
 }

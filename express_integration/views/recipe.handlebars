@@ -1,0 +1,67 @@
+<body>
+    <div class="background-recipe">
+        {{> nav}}
+        {{> header}}
+    </div>
+    <article>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-lg-8 offset-lg-1">
+                    <div class="row resume">
+                        <div class="col-9">
+                            <h2>Paëlla</h2>
+                        </div>
+                        <div class="col-3 timer">
+                            <div><i class="fas fa-stopwatch"></i> Préparation - 2 h</div>
+                            <div><i class="far fa-hourglass"></i> Cuisson - 1 h</div>
+                        </div>
+                    </div>
+                    <div class="row recipe">
+                        <div class="col-12 col-lg-3 ingredients">
+                            <span>6 moules</span>
+                            <span>1/2 poulet</span>
+                            <span>125g de porc maigre</span>
+                            <span>60g de chorizo</span>
+                            <span>Amandes d'Espagne</span>
+                            <span>4 crevettes</span>
+                            <span>1/2 verre d'huile d'olive</span>
+                            <span>3 cuillères de vin</span>
+                            <span>1 oignon</span>
+                            <span>2 gousses d'ails</span>
+                            <span>2 tomates</span>
+                            <span>1 piment doux</span>
+                            <span>250g de riz</span>
+                            <span>Du persil</span>
+                            <span>Poivre de Cayenne</span>
+                            <span>2 verres de bouillon</span>
+                            <span>Poivre noir</span>
+                            <span>Sel</span>
+                            <span>125 g de petit pois</span>
+                        </div>
+                        <div class="col-12 col-lg-9 content">
+                            {{#each content}}
+                            <h6>Etape {{math @index "+" 1}}</h6>
+                            <p>{{this}}</p>
+                            {{/each}}
+                        </div>
+                        <!-- /.post-content -->
+                    </div>
+                    <div class="col-12">
+                        <div class="row sponsored">
+                            {{#each imgSponsorise}}
+                            <div class="col-6 offset-3 offset-md-0 col-md-4">
+                                <div class="img-container">
+                                    <img src="{{this}}">
+                                    <span>Lien sponsorisé {{math @index "+" 1}}</span>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+                {{> sidebar}}
+            </div>
+        </div>
+    </article>
+    {{> footer}}
+</body>

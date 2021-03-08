@@ -24,16 +24,19 @@ const carsModel = mongoose.model("cars", garageSchema);
 //         brand: "Renault",
 //         model: "Espace",
 //         year: 1999,
+//         created: now.toUTCString()
 //       },
 //       {
 //         brand: "Renault",
 //         model: "Scenic",
 //         year: 2004,
+//         created: now.toUTCString()
 //       },
 //       {
 //         brand: "Peugeot",
 //         model: "308",
 //         year: 2017,
+//         created: now.toUTCString()
 //       },
 //     ]);
 //   })
@@ -56,19 +59,22 @@ const carsModel = mongoose.model("cars", garageSchema);
 //         brand: 'Aston Martin',
 //         model: 'DB9',
 //         year: 2010,
+//         created: now.toUTCString()
 //     },
 //     {
 //         brand: 'Range Rover',
 //         model: 'Discovery Sport',
 //         year: 2017,
+//         created: now.toUTCString()
 //     }]).then(response => {console.log(response)})
 
 // carsModel.find({
 //     year: {$gt: 2015}
 // }).then(response => {console.log(response)})
 
+var now = (new Date())
 carsModel.find({
     model: /o/
-}).then(response => {console.log(response)})
+}).then(response => {console.log(response, now.toUTCString())}, Date)
 
 

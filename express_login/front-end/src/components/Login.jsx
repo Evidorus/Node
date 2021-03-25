@@ -30,6 +30,9 @@ export default function Login() {
         }).then((response) => {
             return response.json()
         }).then((response) => {
+          const token = response.token;
+          console.log(token)
+          localStorage.setItem('token', token)
             if (response.success === true){
                 history.push("/admin")
             }

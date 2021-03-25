@@ -1,5 +1,12 @@
 import React, { useState } from "react";
 import {useHistory} from "react-router"
+import Select from "react-select"
+
+const options = [
+  {value: 'paris', label: 'Paris'},
+  {value: 'tokyo', label: 'Tokyo'},
+  {value: 'los angeles', label: 'Los Angeles'}
+]
 
 export default function SignUp() {
   const [emailValid, setEmailValid] = useState(false);
@@ -11,6 +18,7 @@ export default function SignUp() {
   const [surname, setSurname] = useState("");
   const [birth, setBirth] = useState("")
   const [password, setPassword] = useState("");
+  const [city, setCity] = useState(null)
 
   const history = useHistory()
 
@@ -26,11 +34,13 @@ export default function SignUp() {
         surname: surname,
         firstName: firstName,
         email: email,
-        confirmPassword: confirmPassword
+        confirmPassword: confirmPassword,
+        city: city.value
       })
     }).then((response) => {
       return response.json();
-    }).then((response) => {
+    })
+    .then((response) => {
       if (response.success === true){
         history.push('/created')
       }
@@ -157,6 +167,13 @@ export default function SignUp() {
               required
               onChange={onChangeConfirmPassword}
             />
+          </div>
+          <div className="col-8">
+          <label>Select your city</label>
+          <Select
+          required
+          options={options}
+          onChange={setCity}/>
           </div>
           <div className="col-8">
             <input

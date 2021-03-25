@@ -4,7 +4,13 @@ export default function Admin() {
     const [users, setUsers] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:8000/admin')
+        const token = localStorage.getItem('token')
+        console.log(token)
+        fetch('http://localhost:8000/admin', {
+            headers: {
+                'authorization': `bearer ${token}`,
+            }
+        })
         .then((response) => response.json())
         .then((response) => {
             setUsers(response)
